@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { EmployeeService } from './employee.service';
 import { Employee } from './employee.entity';
+import { EmployeeDTO } from './DTO/employee.dto';
 
 @Controller('employee')
 export class EmployeeController {
@@ -8,7 +9,7 @@ export class EmployeeController {
         private readonly employeeService: EmployeeService
     ){}
    @Post()
-    async createEmployee(@Body() data: Partial<Employee>): Promise<Employee> {
+    async createEmployee(@Body() data: EmployeeDTO): Promise<Employee> {
         return this.employeeService.createEmployee(data);
     }
 
